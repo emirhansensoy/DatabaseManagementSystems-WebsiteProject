@@ -4,10 +4,65 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script>
+      function gonderKontrol()
+      {
+        var nameValue = document.getElementById("ad").value;
+        var surnameValue = document.getElementById("soyad").value;
+        var cinsiyetValue;
+        var numberValue = document.getElementById("number").value;
+        var emailValue = document.getElementById("email").value;
+        var iletiValue = document.getElementById("ileti").value;
+        var reg = new RegExp(/^[a-z]{1}[\d\w\.-]+@[\d\w-]{3,}\.[\w]{2,3}(\.\w{2})?$/);
+
+        for(i=0;i<document.form1.cinsiyet.length;i++)
+        {
+          if (document.form1.cinsiyet[i].checked)
+          {
+            cinsiyetValue = 1;
+          }
+        }
+
+        if (nameValue == "")
+        {
+          alert("Lütfen isim giriniz.");
+        }
+        else if (surnameValue == "")
+        {
+          alert("Lütfen soyisim giriniz.");
+        }
+        else if (emailValue == "")
+        {
+          alert("Lütfen e-posta adresi giriniz.");
+        }
+        else if(reg.test(emailValue) == false)
+        {
+          alert("Lütfen geçerli bir e-posta adresi giriniz.")
+        }
+        else if (cinsiyetValue != 1)
+        {
+          alert("Lütfen cinsiyet seçiniz.");
+        }
+        else if (numberValue == "")
+        {
+          alert("Lütfen yaş giriniz.");
+        }
+        else if (iletiValue == "")
+        {
+          alert("Lütfen ileti giriniz.");
+        }
+        else
+        {
+          alert("İletiniz başarı ile gönderildi.")
+        }
+      }
+    </script>
+
     <title>İletişim - Emirhan Şensoy</title>
 
   </head>
-  <body>
+  <body style="background-color:#161616">
 
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
       <!-- Toggler button - Sayfa küçüldüğünde navbar link'leri bir butonun icine saklanır. -->
@@ -30,13 +85,115 @@
           <li class="nav-item">
             <a class="nav-link" style="color:white" href="takimimiz.html">Takımımız</a>
           </li>
-          <li class="nav-item">
+          <li  class="nav-item">
             <a class="nav-link" style="color:#A2A2A2" href="#">İletişim</a>
+          </li>
+        </ul>
+        <ul class="nav navbar-nav ml-auto">
+          <li>
+            <a class="nav-link" style="color:white" href="login.html">Giriş Yap</a>
           </li>
         </ul>
       </div>
     </nav>
 
+    <br><br><br>
+
+    <form name="form1" method="post">
+      <div class="container" style="margin-top:70px">
+        <div class="card bg-dark">
+
+          <div class="card-header text-center" style="color:white">
+            <h4>İletişim Formu</h4>
+          </div>
+
+          <div class="card-body bg-secondary">
+
+            <div class="row" style="color:white">
+              <div class="col-md-3 offset-2" style="margin-top:5px">
+                <h5>İsim Soyisim:</h5>
+              </div>
+              <div class="col-md-4" style="margin-top:5px">
+                <input type="text" name="isim" id="ad" size="15" placeholder="Adınız..." class="rounded">
+                <input type="text" name="soyisim" id="soyad" size="15" placeholder="Soyadınız..." class="rounded">
+              </div>
+            </div>
+
+            <div class="row" style="color:white">
+              <div class="col-md-3 offset-2" style="margin-top:5px">
+                <h5>E-Posta Adresiniz:</h5>
+              </div>
+              <div class="col-md-7" style="margin-top:5px">
+                <input type="text" name="email" id="email" size="36" placeholder="myname@example.com" class="rounded">
+              </div>
+            </div>
+
+
+            <div class="row" style="color:white">
+              <div class="col-md-3 offset-2" style="margin-top:5px">
+                <h5>Cinsiyetiniz:</h5>
+              </div>
+              <div class="col-md-7" style="margin-top:5px">
+                <input type="radio" name="cinsiyet" value="erkek">Erkek&nbsp&nbsp&nbsp
+                <input type="radio" name="cinsiyet" value="kadin">Kadın
+              </div>
+            </div>
+
+            <div class="row" style="color:white">
+              <div class="col-md-3 offset-2" style="margin-top:5px">
+                <h5>Yaşınız:</h5>
+              </div>
+              <div class="col-md-7" style="margin-top:5px">
+                <input type="number" id="number" name="yas" min="8" max="120" placeholder="Yaşınız..." class="rounded">
+              </div>
+            </div>
+
+            <div class="row" style="color:white">
+              <div class="col-md-3 offset-2" style="margin-top:5px">
+                <h5>İletiniz:</h5>
+              </div>
+              <div class="col-md-7" style="margin-top:5px">
+                <textarea name="ileti" id="ileti" rows="6" cols="38" placeholder="Buraya text giriniz..." class="rounded"></textarea>
+              </div>
+            </div>
+
+            <div class="row" style="color:white">
+              <div class="col-md-3 offset-2" style="margin-top:5px">
+                <input type="submit" class="btn btn-dark" name="submit" value="Gönder" onclick="gonderKontrol();">
+                <input type="reset" class="btn btn-dark" name="reset" value="Temizle">
+              </div>
+            </div>
+          </div>
+
+          <div class="card-footer">
+          </div>
+
+        </div>
+      </div>
+    </form>
+
+    <br><br><br><br><br><br>
+
+    <div class="jumbotron jumbotron-fluid text-center" style="margin-bottom:0; background-color:#353a40; color:black">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-2">
+            <a href="https://www.facebook.com/emirhan.sensoy56/"><img src="img/face1.png" alt="Facebook" width="80" height="80" style="margin-left:75px"></a>
+          </div>
+          <div class="col-md-2">
+            <a href="https://www.instagram.com/emirhn.sensoy/"><img src="img/insta1.png" alt="Instagram" width="70" height="70" style="margin-left:75px"></a>
+          </div>
+          <div class="col-md-2">
+            <a href="https://github.com/rytheen"><img src="img/github1.png" alt="Github" width="70" height="70" style="margin-left:75px"></a>
+          </div>
+          <div class="col-md-2">
+            <img src="img/mail.png" alt="E-mail" width="60" height="60" style="margin-left:75px">
+          </div>
+          <div class="col-md-2" style="margin-left:-15px; margin-top:6px">
+            <p>emirhansensoy56@hotmail.com<br>emirhan.sensoy@ogr.sakarya.edu.tr</p>
+        </div>
+      </div>
+    </div>
 
     <script src="js/jquery-3.4.1.slim.min.js"></script>
     <script src="js/popper.min.js"></script>
