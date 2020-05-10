@@ -4,37 +4,18 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <script>
-      function gonderKontrol()
-      {
-        var usernameValue = document.getElementById("kullaniciAdi").value;
-        var passwordValue = document.getElementById("sifre").value;
-        var reg = new RegExp(/^[a-z]{1}[\d\w\.-]+@[\d\w-]{3,}\.[\w]{2,3}(\.\w{2})?$/);
-
-        if (usernameValue == "")
-        {
-          alert("Lütfen kullanıcı adı giriniz.");
-        }
-        else if(reg.test(usernameValue) == false)
-        {
-          alert("Lütfen geçerli bir kullanıcı adı giriniz.")
-        }
-        else if (passwordValue == "")
-        {
-          alert("Lütfen şifre giriniz.");
-        }
-        else
-        {
-          document.getElementById("form1").submit();
-        }
-      }
-    </script>
-
     <title>Giriş Yap - Emirhan Şensoy</title>
+
 
   </head>
   <body style="background-color:#161616">
+
+    <?php
+      if($_POST["kullaniciAdi"] != "g191210040@sakarya.edu.tr" || $_POST["sifre"] != "123")
+      {
+        header("Location: "."loginYanlis.html");
+      }
+    ?>
 
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
       <!-- Toggler button - Sayfa küçüldüğünde navbar link'leri bir butonun icine saklanır. -->
@@ -63,67 +44,42 @@
         </ul>
         <ul class="nav navbar-nav ml-auto">
           <li>
-            <a class="nav-link" style="color:#A2A2A2" href="#">Giriş Yap</a>
+            <a class="nav-link" style="color:#A2A2A2" href="#"><?php echo $_POST["kullaniciAdi"]; ?></a>
           </li>
         </ul>
       </div>
     </nav>
 
-    <br><br><br><br><br>
+    <br><br><br><br>
 
-    <form name="form1" id="form1" method="post" action="login.php">
-      <div class="container" style="margin-top:70px">
-        <div class="card bg-dark">
-
-          <div class="card-header text-center" style="color:white">
-            <h3>Giriş Yap</h3>
-          </div>
-
-          <div class="card-body bg-secondary">
-
-            <br>
-
-            <div class="row" style="color: white">
-              <div class="col-md-2 offset-4">
-                <p class="float-left">Kullanıcı Adı : </p>
-              </div>
-              <div class="col-md-2">
-                <center>
-                  <input type="text" name="kullaniciAdi" id="kullaniciAdi" size="15" placeholder="Username..." class="rounded">
-                </center>
-              </div>
-            </div>
-
-            <div class="row" style="color:white">
-              <div class="col-md-2 offset-4">
-                <p>Şifre : </p>
-              </div>
-              <div class="col-md-2">
-                <center>
-                  <input type="password" name="sifre" id="sifre" size="15" placeholder="Password..." class="rounded">
-                </center>
-              </div>
-            </div>
-
-            <div class="row" style="color:white">
-              <div class="col-md-1 offset-4">
-                <input type="button"  class="btn btn-dark" name="girisYap" value="Giriş Yap" onclick="gonderKontrol();">
-              </div>
-            </div>
-
-            <br><br>
-
-          </div>
-
-          <div class="card-footer">
-            <br>
-          </div>
-
+    <div class="container" style="margin-top:70px">
+      <div class="row rounded-lg" style="color: white; background-color: #353a40;">
+        <div class="col-md-4 offset-4">
+          <br>
+          <br>
         </div>
-      </div>
-    </form>
+        <div class="col-md-8 offset-2">
+          <center>
+            <h3>Hoşgeldin <?php echo $_POST["kullaniciAdi"]; ?></h2>
+            <br>
+            <br>
+          </center>
+          <p>Kullanıcı Adınız : <?php echo $_POST["kullaniciAdi"]; ?></p>
+          <p>Şifreniz : <?php echo $_POST["sifre"]; ?></p>
+        </div>
+        <div class="col-md-4 offset-4">
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+        </div>
 
-    <br><br><br><br><br><br><br><br><br><br>
+      </div>
+    </div>
+
+
+    <br><br><br><br><br><br><br><br><br><br><br>
 
 
     <div class="jumbotron jumbotron-fluid text-center" style="margin-bottom:0; background-color:#353a40; color:black">
